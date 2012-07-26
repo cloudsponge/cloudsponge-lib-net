@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sponge.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DomainKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BTUU28Y8FTW4UTXL44B8</Value>
+    </Setting>
+    <Setting Name="DomainPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Yes6cLblk3lf4jWt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
