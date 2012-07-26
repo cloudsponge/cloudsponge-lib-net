@@ -10,6 +10,7 @@ namespace CloudSponge
     {
         Initializing,
         Gathering,
+        Submitting,
         Complete
     }
     public enum EventStatus
@@ -68,14 +69,14 @@ namespace CloudSponge
             Events = from e in root.Element("events").Elements("event")
                      select new Event
                      {
-                         CreatedAt = DateTime.Parse(e.Element("created-at").Value),
+//                         CreatedAt = DateTime.Parse(e.Element("created-at").Value),
                          Description = e.Element("description").Value,
                          Type = (EventType)Enum.Parse(typeof(EventType), e.Element("event-type").Value, true),
-                         Id = int.Parse(e.Element("id").Value),
-                         ImportActionId = int.Parse(e.Element("import-action-id").Value),
+//                         Id = int.Parse(e.Element("id").Value),
+//                         ImportActionId = int.Parse(e.Element("import-action-id").Value),
                          Status = (EventStatus)Enum.Parse(typeof(EventStatus), e.Element("status").Value, true),
-                         Unclaimed = bool.Parse(e.Element("unclaimed").Value),
-                         UpdateAt = DateTime.Parse(e.Element("updated-at").Value),
+//                         Unclaimed = bool.Parse(e.Element("unclaimed").Value),
+//                         UpdateAt = DateTime.Parse(e.Element("updated-at").Value),
                          Value = string.IsNullOrWhiteSpace(e.Element("value").Value) ? null : (int?)int.Parse(e.Element("value").Value)
                      };
 
