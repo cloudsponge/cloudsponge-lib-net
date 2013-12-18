@@ -11,8 +11,16 @@ Usage Example
     // Register your domain at http://www.cloudsponge.com.
     // instantiate with your CloudSponge credentials
     var api = new Api("DomainKey", "DomainPassword");
+    
+    // Consent example
     var consent = api.Consent(ContactSource.Gmail);
     Process.Start(consent.Url);
+    
+    // Desktop example
+    var consent = api.Desktop(ContactSource.Outlook);
+    // render the value of consent.Url in an applet tag
+    //  here's an example of one: https://gist.github.com/dangerouse/6510926
+    
     var events = api.Events(consent.ImportId);
     // Wait for events.IsComplete
     var contacts = api.Contacts(consent.ImportId);
