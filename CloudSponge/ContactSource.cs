@@ -13,8 +13,8 @@ namespace CloudSponge
         Gmail,
         AOL,
         Plaxo,
-        MacAddressBook,
-        MicrosoftOutlook
+        AddressBook,
+        Outlook
     }
 
     public static class ContactSourceEx
@@ -31,8 +31,8 @@ namespace CloudSponge
                 case ContactSource.AOL:
                 case ContactSource.Plaxo:
                     return AuthenticationMethod.Import;
-                case ContactSource.MacAddressBook:
-                case ContactSource.MicrosoftOutlook:
+                case ContactSource.AddressBook:
+                case ContactSource.Outlook:
                     return AuthenticationMethod.DesktopApplet;
                 case ContactSource.Uknown:
                     return AuthenticationMethod.Consent | AuthenticationMethod.Import | AuthenticationMethod.DesktopApplet;

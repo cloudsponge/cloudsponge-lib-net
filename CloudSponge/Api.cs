@@ -29,6 +29,9 @@ namespace CloudSponge
         static readonly string ConsentRoot = string.Format("{0}user_consent.{1}", BeginImportRoot, Format);
         static readonly string ConsentFormat = string.Format("{0}?service={{0}}&user_id={{1}}&echo={{2}}", ConsentRoot);
 
+        static readonly string DesktopRoot = string.Format("{0}desktop_applet.{1}", BeginImportRoot, Format);
+        static readonly string DesktopFormat = string.Format("{0}?service={{0}}&user_id={{1}}&echo={{2}}", DesktopRoot);
+
         static readonly string ImportRoot = string.Format("{0}user_consent.{1}", BeginImportRoot, Format);
         static readonly string ImportFormat = string.Format("{0}?service={{2}}&username={{0}}&password={{1}}&user_id={{3}}&echo={{4}}", ImportRoot);
 
@@ -108,6 +111,15 @@ namespace CloudSponge
         public ConsentResponse Consent(ContactSource service, string userId = "", string echo = "")
         {
             return Consent(service.ToString(), userId, echo);
+        }
+        public ConsentResponse Desktop(string service, string userId = "", string echo = "")
+        {
+          string uri = string.Format(DesktopFormat, service, userId, echo);
+          return GetResponse<ConsentResponse>(uri);
+        }
+        public ConsentResponse Desktop(ContactSource service, string userId = "", string echo = "")
+        {
+          return Desktop(service.ToString(), userId, echo);
         }
     }
 }
