@@ -35,18 +35,44 @@ namespace CloudSponge
             this.Contacts = from c in root.Element("contacts").Elements("contact")
                             select new Contact
                             {
-                                FirstName = c.Element("first-name").Value,
-                                LastName = c.Element("last-name").Value,
+                                FirstName = _accessStringProperty(c, "first-name"),
+                                LastName = _accessStringProperty(c, "last-name"),
                                 EmailAddresses = from e in c.Element("email").Elements("email")
-                                                 select e.Element("address").Value,
+                                                 select _accessStringProperty(e, "address"),
                                 PhoneNumbers = from p in c.Element("phone").Elements("phone")
                                                select new PhoneNumber
                                                {
-                                                   Number = p.Element("number").Value,
-                                                   Type = (PhoneNumberType)Enum.Parse(typeof(PhoneNumberType), p.Element("type").Value, true)
+                                                   Number = _accessStringProperty(p, "number"),
+                                                   Type = _accessPhoneNumberTypeProperty(p, "type")
                                                }
                             };
             
+        }
+
+        private String _accessStringProperty(XElement el, String property)
+        {
+            String ret = "";
+            XElement xValue;
+            if (el != null)
+            {
+                xValue = el.Element(property);
+                if (xValue != null)
+                {
+                    ret = xValue.Value;
+                }
+            }
+            return ret;
+        }
+
+        private PhoneNumberType _accessPhoneNumberTypeProperty(XElement el, String property)
+        {
+            PhoneNumberType ret = PhoneNumberType.Home;
+            String phoneTypeString = _accessStringProperty(el, property);
+            if (phoneTypeString != "")
+            {
+                ret = (PhoneNumberType)Enum.Parse(typeof(PhoneNumberType), phoneTypeString, true);
+            }
+            return ret;
         }
     }
 }
